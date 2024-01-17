@@ -1,0 +1,104 @@
+<!-- 
+
+
+<mat-toolbar class="navbarcolor" style="background-color: orange;">
+    <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    <h1 style="padding: 23px;"></h1>
+  </mat-toolbar>
+  <mat-sidenav-container autosize>
+    <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'" style="background-color: #a4e6f3;">
+        <a mat-list-item [routerLink]="['/layout/home']" [routerLinkActive]="'active'">
+            <span class="entry">
+                <mat-icon>dashboard</mat-icon>
+               <span *ngIf="!isCollapsed">Dashboard</span>
+            </span>
+         </a>
+         
+         <a mat-list-item  [routerLink]="['/layout/masterMenu']" [routerLinkActive]="'active'">
+            <span class="entry">
+                <mat-icon>settings</mat-icon>
+               <span *ngIf="!isCollapsed">Master</span>
+            </span>
+         </a>
+       
+        
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: #f2f2f2;">
+      
+          <router-outlet></router-outlet>
+        
+        
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+   -->
+   
+   <mat-toolbar class="mat-elevation-z8">
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    Company Logo
+  </mat-toolbar>
+
+<mat-sidenav-container>
+  <!-- <img
+  class="avatar mat-elevation-z8"
+  src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+/> -->
+
+<mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  <img
+  class="avatar mat-elevation-z8"
+  src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+/>
+
+
+<h4 class="name">Vijay Janwale</h4>
+<p class="designation">Software Engineer</p>
+  <button mat-button class="menu-button">
+    <a mat-list-item [routerLink]="['/layout/home']" [routerLinkActive]="'active'">
+      <span class="entry">
+          <mat-icon>dashboard</mat-icon>
+         <span >Dashboard</span>
+      </span>
+   </a>
+  </button>
+  <button mat-button class="menu-button">
+    <a mat-list-item  [routerLink]="['/layout/masterMenu']" [routerLinkActive]="'active'">
+      <span class="entry">
+          <mat-icon>settings</mat-icon>
+         <span >Master</span>
+      </span>
+   </a>
+  </button>
+  <button mat-button class="menu-button">
+    <a mat-list-item  [routerLink]="['/layout/materialMenu']" [routerLinkActive]="'active'">
+      <span class="entry">
+          <mat-icon>settings</mat-icon>
+         <span >Material Moment</span>
+      </span>
+   </a>
+  </button>
+  <!-- <button mat-button class="menu-button">
+    <mat-icon>info</mat-icon>
+    <span>About</span>
+  </button> -->
+
+  <mat-divider></mat-divider>
+
+  <!-- <button mat-button class="menu-button">
+    <mat-icon>help</mat-icon>
+    <span>Help</span>
+  </button> -->
+</mat-sidenav>
+  <mat-sidenav-content>
+    <div><router-outlet></router-outlet></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

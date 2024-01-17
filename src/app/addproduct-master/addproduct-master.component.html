@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin-top: 40px">
+                <div class="card-header">
+                    Add product
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="AddProductForm" (ngSubmit)="submitForm(AddProductForm)">
+                    <!-- <form [formGroup]="AddProductForm" (ngSubmit)="SaveProduct(AddProductForm)"> -->
+                        <!-- Email input -->
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label class="form-label">product name <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="productName" />
+
+                                <div *ngIf="AddProductForm.get('productName')?.invalid && (AddProductForm.get('productName')?.dirty || AddProductForm.get('productName')?.touched)"
+                                    style="color: red;">
+                                    product name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">product Price<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="productPrice" />
+
+                                <div *ngIf="AddProductForm.get('productPrice')?.invalid && (AddProductForm.get('productPrice')?.dirty || AddProductForm.get('productPrice')?.touched)"
+                                    style="color: red;">
+                                     product name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">product Description<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="productDescription" />
+
+                                <div *ngIf="AddProductForm.get('productDescription')?.invalid && (AddProductForm.get('productDescription')?.dirty || AddProductForm.get('productDescription')?.touched)"
+                                    style="color: red;">
+                                    product Description is required
+                                </div>
+                            </div>
+                        </div>
+                     
+                      
+                        <div class="form-group row" style="justify-content: center;
+                        margin-top: 30px;">
+                            <div class="col-md-2">
+
+                           
+                            <button type="submit" class="btn btn-primary">save</button>
+                           
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

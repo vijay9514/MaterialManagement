@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin-top: 40px">
+                <div class="card-header">
+                    Add Supplyer 
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="supplyerForm" (ngSubmit)="SaveSupplyer(supplyerForm)">
+                        <!-- Email input -->
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label class="form-label">supplyer name <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="supplierName" />
+
+                                <div *ngIf="supplyerForm.get('supplierName')?.invalid && (supplyerForm.get('supplierName')?.dirty || supplyerForm.get('supplierName')?.touched)"
+                                    style="color: red;">
+                                    supplyer name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">supplyer company name <span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="supplierCompanyName" />
+
+                                <div *ngIf="supplyerForm.get('supplierCompanyName')?.invalid && (supplyerForm.get('supplierCompanyName')?.dirty || supplyerForm.get('supplierCompanyName')?.touched)"
+                                    style="color: red;">
+                                    supplyer company name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">contact Person <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="contactPerson" />
+
+                                <div *ngIf="supplyerForm.get('contactPerson')?.invalid && (supplyerForm.get('contactPerson')?.dirty || supplyerForm.get('contactPerson')?.touched)"
+                                    style="color: red;">
+                                    contact Person is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-md-4">
+                                <label class="form-label">Email <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="contactEmail" />
+
+                                <div *ngIf="supplyerForm.get('contactEmail')?.invalid && (supplyerForm.get('contactEmail')?.dirty || supplyerForm.get('contactEmail')?.touched)"
+                                    style="color: red;">
+                                    email is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Mobile No <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="contactMobileNo" />
+
+                                <div *ngIf="supplyerForm.get('contactMobileNo')?.invalid && (supplyerForm.get('contactMobileNo')?.dirty || supplyerForm.get('contactMobileNo')?.touched)"
+                                    style="color: red;">
+                                    mobile number is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">address <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="address" />
+
+                                <div *ngIf="supplyerForm.get('address')?.invalid && (supplyerForm.get('address')?.dirty || supplyerForm.get('address')?.touched)"
+                                    style="color: red;">
+                                    address is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-md-4">
+                                <label class="form-label">city <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="city" />
+
+                                <div *ngIf="supplyerForm.get('city')?.invalid && (supplyerForm.get('city')?.dirty || supplyerForm.get('city')?.touched)"
+                                    style="color: red;">
+                                    city is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">status <span style="color: red">*</span></label>
+                              
+                                <select class="form-control" (change)="getstatus($event)" formControlName="status">
+                                    <option [value]=null>Select status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+
+                                <div *ngIf="supplyerForm.get('status')?.invalid && (supplyerForm.get('status')?.dirty || supplyerForm.get('status')?.touched)"
+                                    style="color: red;">
+                                    status is required
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <label class="form-label">created On <span style="color: red">*</span></label>
+                                <input type="date" class="form-control" formControlName="createdOn" />
+
+                                <div *ngIf="supplyerForm.get('createdOn')?.invalid && (supplyerForm.get('createdOn')?.dirty || supplyerForm.get('createdOn')?.touched)"
+                                    style="color: red;">
+                                    date is required
+                                </div>
+                            </div> -->
+                        </div>
+                        <!-- <div class="form-group row">
+
+                            <div class="col-md-4">
+                                <label class="form-label">updated On <span style="color: red">*</span></label>
+                                <input type="date" class="form-control" formControlName="updatedOn" />
+
+                                <div *ngIf="supplyerForm.get('updatedOn')?.invalid && (supplyerForm.get('updatedOn')?.dirty || supplyerForm.get('updatedOn')?.touched)"
+                                    style="color: red;">
+                                    date is required
+                                </div>
+                            </div>
+
+                        </div> -->
+                        <div class="form-group row" style="justify-content: center;
+                        margin-top: 30px;">
+                            <div class="col-md-2">
+
+                           
+                            <button type="submit" class="btn btn-primary">save</button>
+                           
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

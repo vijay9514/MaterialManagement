@@ -1,0 +1,186 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin-top: 40px;margin-bottom: 15px ">
+                <div class="card-header">
+                    Add Outward
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="outwardForm" >
+                        <!-- Email input -->
+                        <div class="form-group row">
+                               <div class="col-md-4">
+                                <label class="form-label">outward Name <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="outward_name" />
+
+                                <div *ngIf="outwardForm.get('outward_name')?.invalid && (outwardForm.get('outward_name')?.dirty || outwardForm.get('outward_name')?.touched)"
+                                    style="color: red;">
+                                    outward name is required
+                                </div>
+                            </div>
+                                <div class="col-md-4">
+                                <label class="form-label">outward Amount <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="outwardTotleAmount" readonly>
+
+                                <!-- <div *ngIf="InwardForm.get('inwardTotleAmount')?.invalid && (InwardForm.get('inwardTotleAmount')?.dirty || InwardForm.get('inwardTotleAmount')?.touched)"
+                                    style="color: red;">
+                                    inward Amount is required
+                                </div> -->
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">outward Date <span style="color: red">*</span></label>
+                                <input type="date" class="form-control" formControlName="outwardDate" />
+
+                                <div *ngIf="outwardForm.get('outwardDate')?.invalid && (outwardForm.get('outwardDate')?.dirty || outwardForm.get('outwardDate')?.touched)"
+                                    style="color: red;">
+                                    outward date is required
+                                </div>
+                            </div>
+                        
+                         
+
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-md-4">
+                                <label class="form-label">contact <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="contactPersonName" />
+
+                                <div *ngIf="outwardForm.get('contactPersonName')?.invalid && (outwardForm.get('contactPersonName')?.dirty || outwardForm.get('contactPersonName')?.touched)"
+                                    style="color: red;">
+                                    contact is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Mobile No <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="contactMobileNo" />
+
+                                <div *ngIf="outwardForm.get('contactMobileNo')?.invalid && (outwardForm.get('contactMobileNo')?.dirty || outwardForm.get('contactMobileNo')?.touched)"
+                                    style="color: red;">
+                                    mobile number is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">select product recipt <span
+                                        style="color: red">*</span></label>
+                                <input type="file" (change)="onFileSelected($event)" />
+                                <!-- <button (click)="convertToBase64()">Convert to Base64</button> -->
+
+                              
+                            </div>
+                            <div class="col-md-4">
+
+                                <label class="form-label">product Name <span style="color: red">*</span></label>
+
+                                <select class="form-control" formControlName="productId" (change)="getProductByIds($event)">
+                                    <option [value]=null>Select product</option>
+                                    <option *ngFor="let item of productData" [value]="item.productId">{{item.productName}}</option>
+
+                                </select>
+
+                                <div *ngIf="outwardForm.get('productId')?.invalid && (outwardForm.get('productId')?.dirty || outwardForm.get('productId')?.touched)"
+                                    style="color: red;">
+                                    product is required
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">product quantity <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="quantity" />
+
+                                <div *ngIf="outwardForm.get('quantity')?.invalid && (outwardForm.get('quantity')?.dirty || outwardForm.get('quantity')?.touched)"
+                                    style="color: red;">
+                                    product quantity is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                  <div *ngIf="base64Image" style="height: 23px ">
+                                    <img [src]="base64Image" alt="Converted Image" style="width: 100%;"/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-2" style="margin-top: 30px;">
+                                        <button class="btn btn-primary" (click)="AddProductInOneList()">Add</button>
+                                        
+                                        </div>
+                                </div>
+                             
+                            </div>
+
+                        </div>
+                       <!-- <div class="form-group row" style="justify-content: center;">
+                        <div class="col-md-2" style="margin-top: 30px;">
+                        <button class="btn btn-primary" (click)="AddProductInOneList()">Add</button>
+                        
+                        </div>
+                       </div> -->
+                       <div class="form-group row">
+                        <div class="col-md-8">
+                            <div class="">
+                                          
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Product Id</th>
+                                      <th>Product Name</th>
+                                      <th>Product Quantity</th>
+                                      <th>Total Price</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let item of ProductMasterList">
+                                      <td>{{item.productId}}</td>
+                                      <td>{{item.productName}}</td>
+                                      <td>{{item.quantity}}</td>
+                                      <td>{{item.total}}</td>
+                                       <td>
+                                         <!-- <mat-icon (click)="editRow(element)" style="color:#48efe1e0">edit</mat-icon> -->
+                                        <mat-icon (click)="deleteRow(item.productId)" style="color: red;">delete</mat-icon>  
+                                                                     
+                                    </td>
+                                    </tr>
+                                  
+                                  </tbody>
+                                </table>
+                              </div>
+                        </div>
+                       </div>
+                       <div class="form-group row">
+                          <div class="col-md-4">
+                                <label class="form-label">Payable Amount <span style="color: red">*</span></label>
+                                <input type="number" class="form-control" formControlName="paidAmount" (keyup)="calculateRemainingAmount()"/>
+
+                                <div *ngIf="outwardForm.get('paidAmount')?.invalid && (outwardForm.get('paidAmount')?.dirty || outwardForm.get('paidAmount')?.touched)"
+                                    style="color: red;">
+                                    payableAmount  is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Remaining Amount <span style="color: red">*</span></label>
+                                <input type="number" class="form-control" formControlName="remainingAmount" readonly/>
+
+                                <div *ngIf="outwardForm.get('remainingAmount')?.invalid && (outwardForm.get('remainingAmount')?.dirty || outwardForm.get('remainingAmount')?.touched)"
+                                    style="color: red;">
+                                    remaining Amount  is required
+                                </div>
+                            </div>
+                       </div>
+             
+                        <div class="form-group row" style="justify-content: center;
+                        margin-top: 30px;">
+                            <div class="col-md-2">
+
+
+                                <button type="submit" class="btn btn-primary" (click)="saveInward()">save</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+::ng-deep .modal {
+    z-index: 9999; /* or a higher value */
+  }
+  
+  ::ng-deep .mat-sidenav-container {
+    z-index: 1040; /* or a lower value than the modal */
+  }
+  .row.content {height: 550px}
+    
+  /* Set gray background color and 100% height */
+  .sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+      
+  /* On small screens, set height to 'auto' for the grid */
+  @media screen and (max-width: 767px) {
+    .row.content {height: auto;} 
+  }

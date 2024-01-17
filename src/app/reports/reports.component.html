@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row" style="margin-top: 40px ">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #c98c1c;
+                color: white;">
+                 <h3>Inward Outward Report Here</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="ReportForm"  (ngSubmit)="GenerateReports(ReportForm)">
+                        <div  class="row">
+                            <div class="col-md-4">
+
+                                <label class="form-label">Select Report <span style="color: red">*</span></label>
+        
+                                <select class="form-control" formControlName="ReportName" (change)="getProductByIds($event)">
+                                    <option [value]=null>Select Report</option>
+                                    <option value="Inward Report">Inward Report</option>
+                                    <option value="Outward Report">Outward Report</option>
+        
+                                </select>
+        
+                                <div *ngIf="ReportForm.get('ReportName')?.invalid && (ReportForm.get('ReportName')?.dirty || ReportForm.get('ReportName')?.touched)"
+                                    style="color: red;">
+                                    ReportName is required
+        
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+                                <label class="form-label">Select Date <span style="color: red">*</span></label>
+        
+                               
+                                <input type="date" class="form-control" formControlName="fromDate" >
+        
+                                <div *ngIf="ReportForm.get('fromDate')?.invalid && (ReportForm.get('fromDate')?.dirty || ReportForm.get('fromDate')?.touched)"
+                                    style="color: red;">
+                                    date is required
+        
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+                                <label class="form-label">Select Date <span style="color: red">*</span></label>
+        
+                               
+                                <input type="date" class="form-control" formControlName="toDate" >
+        
+                                <div *ngIf="ReportForm.get('toDate')?.invalid && (ReportForm.get('toDate')?.dirty || ReportForm.get('toDate')?.touched)"
+                                    style="color: red;">
+                                    date is required
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="row">
+                           
+                        </div>
+                  
+                    
+                    <div class="row" style="margin-top: 33px;text-align: end;">
+
+                    <div>
+                        
+                    <button type="submit" class="btn btn-primary"  style="background-color: #c98c1c;">Generate Report</button>
+                    
+                </div>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

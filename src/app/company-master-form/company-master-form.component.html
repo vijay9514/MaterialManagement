@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin-top: 40px">
+                <div class="card-header">
+                    Add Company
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="AddCompany" (ngSubmit)="submitForm(AddCompany)">
+                    <!-- <form [formGroup]="AddProductForm" (ngSubmit)="SaveProduct(AddProductForm)"> -->
+                        <!-- Email input -->
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label class="form-label">Company Name<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="companyName" />
+
+                                <div *ngIf="AddCompany.get('companyName')?.invalid && (AddCompany.get('companyName')?.dirty || AddCompany.get('companyName')?.touched)"
+                                    style="color: red;">
+                                    company name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">company Address<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="companyAddress" />
+
+                                <div *ngIf="AddCompany.get('companyAddress')?.invalid && (AddCompany.get('companyAddress')?.dirty || AddCompany.get('companyAddress')?.touched)"
+                                    style="color: red;">
+                                     company address is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Email Id<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="contactDetails" />
+
+                                <div *ngIf="AddCompany.get('contactDetails')?.invalid && (AddCompany.get('contactDetails')?.dirty || AddCompany.get('contactDetails')?.touched)"
+                                    style="color: red;">
+                                    Email Id is required
+                                </div>
+                            </div>
+                           
+                            <div class="col-md-4">
+                                <label class="form-label">portal Link<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="portalLink" />
+
+                                <div *ngIf="AddCompany.get('portalLink')?.invalid && (AddCompany.get('portalLink')?.dirty || AddCompany.get('portalLink')?.touched)"
+                                    style="color: red;">
+                                    portal Link is required
+                                </div>
+                            </div>
+                        </div>
+                     
+                      
+                        <div class="form-group row" style="justify-content: center;
+                        margin-top: 30px;">
+                            <div class="col-md-2">
+
+                           
+                            <button type="submit" class="btn btn-primary">save</button>
+                           
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

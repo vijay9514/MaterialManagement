@@ -1,0 +1,85 @@
+table {
+    width: 100%;
+  }
+ 
+  /* :host ::ng-deep #myModal {
+    z-index: 99999!important;
+  }
+  ::ng-deep .modal-backdrop{
+position: relative!important;
+  } */
+  /* ::ng deep .modal {
+    background: rgba(0, 0, 0, 0.5); 
+  }
+  ::ng deep.modal-backdrop {
+    display: none;
+  } */
+  
+  /* .modal{z-index: 1060!important;}
+  .modal-backdrop{z-index: 1050!important;} */
+/* 
+  .modal-backdrop {
+    z-index: 1040!important; 
+  } */
+  /* ::ng-deep .modal-backdrop {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5; 
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  } */
+  /* ::ng-deep .modal-backdrop {
+    z-index: 1050;
+    background-color: rgba(0, 0, 0, 0.5);
+  } */
+  
+  /* ::ng-deep .modal-backdrop { 
+    display: none;
+}
+
+::ng-deep .modal-content {
+    box-shadow: 0px 0px 00px 1500px #00000085;
+} */
+::ng-deep .modal-backdrop {
+  display: none;
+}
+
+::ng-deep .modal {
+  background: rgba(0,0,0,0.5);
+}
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}

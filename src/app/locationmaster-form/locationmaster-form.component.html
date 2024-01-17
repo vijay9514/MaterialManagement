@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin-top: 40px">
+                <div class="card-header">
+                    Add Location
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="AddLocation" (ngSubmit)="submitForm(AddLocation)">
+                    <!-- <form [formGroup]="AddProductForm" (ngSubmit)="SaveProduct(AddProductForm)"> -->
+                        <!-- Email input -->
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label class="form-label">location name <span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="locationName" />
+
+                                <div *ngIf="AddLocation.get('locationName')?.invalid && (AddLocation.get('locationName')?.dirty || AddLocation.get('locationName')?.touched)"
+                                    style="color: red;">
+                                    location name is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">location code<span
+                                        style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="locationCode" />
+
+                                <div *ngIf="AddLocation.get('locationCode')?.invalid && (AddLocation.get('locationCode')?.dirty || AddLocation.get('locationCode')?.touched)"
+                                    style="color: red;">
+                                     location code is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">location contact no.<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="locationContactPerson" />
+
+                                <div *ngIf="AddLocation.get('locationContactPerson')?.invalid && (AddLocation.get('locationContactPerson')?.dirty || AddLocation.get('locationContactPerson')?.touched)"
+                                    style="color: red;">
+                                    location contact is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">location Email<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="locationEmailId" />
+
+                                <div *ngIf="AddLocation.get('locationEmailId')?.invalid && (AddLocation.get('locationEmailId')?.dirty || AddLocation.get('locationEmailId')?.touched)"
+                                    style="color: red;">
+                                    location email is required
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">location Description<span style="color: red">*</span></label>
+                                <input type="text" class="form-control" formControlName="locationDesc" />
+
+                                <div *ngIf="AddLocation.get('locationDesc')?.invalid && (AddLocation.get('locationDesc')?.dirty || AddLocation.get('locationDesc')?.touched)"
+                                    style="color: red;">
+                                    location Description is required
+                                </div>
+                            </div>
+                        </div>
+                     
+                      
+                        <div class="form-group row" style="justify-content: center;
+                        margin-top: 30px;">
+                            <div class="col-md-2">
+
+                           
+                            <button type="submit" class="btn btn-primary">save</button>
+                           
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

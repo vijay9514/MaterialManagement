@@ -1,0 +1,32 @@
+<main>
+    <div class="row">
+<div class="col-md-6">
+    <h1>Inward Report</h1>
+</div>
+<div class="col-md-6" style="text-align: end;">
+    <button class="btn btn-primary" (click)="download()">Export To Pdf</button>
+</div>
+    </div>
+    
+
+    <table id="Inward-table">
+      <caption>Contact Information</caption>
+      <tr>
+        <td>Sr.No</td>
+        <th scope="col">Inward Name</th>
+        <th scope="col">Inward Date</th>
+        <th scope="col">InvoiceNo.</th>
+        <th scope="col">Invoice Image</th>
+        <th scope="col">Inward TotalAmnt</th>
+      </tr>
+      <tr *ngFor="let item of AllInwardReportData;  let i = index">
+        <td>{{i+1}}</td>
+        <th scope="row">{{item.inwardName}}</th>
+        <td>{{item.inwardDate}}</td>
+        <td>{{item.invoiceNo}}</td>
+        <td><img src={{item.invoiceImage}} style="height: 20px;"></td>
+        <td>{{item.inwardTotalAmnt}}</td>
+      </tr>
+   
+    </table>
+  </main>
