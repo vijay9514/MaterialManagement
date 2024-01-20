@@ -11,9 +11,9 @@
                         <div class="form-group row">
                                <div class="col-md-4">
                                 <label class="form-label">inward Name <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" formControlName="inwardName" />
+                                <input type="text" class="form-control" formControlName="inward_name" />
 
-                                <div *ngIf="InwardForm.get('inwardName')?.invalid && (InwardForm.get('inwardName')?.dirty || InwardForm.get('inwardName')?.touched)"
+                                <div *ngIf="InwardForm.get('inward_name')?.invalid && (InwardForm.get('inward_name')?.dirty || InwardForm.get('inward_name')?.touched)"
                                     style="color: red;">
                                     Inward name is required
                                 </div>
@@ -175,7 +175,7 @@
 
 
                                 <button type="submit" class="btn btn-primary" (click)="saveInward()" *ngIf="isEditButton !==true">save</button>
-                                <button type="submit" class="btn btn-primary" (click)="UpdateInward()" *ngIf="isEditButton==true">update</button>
+                                <!-- <button type="submit" class="btn btn-primary" (click)="UpdateInward()" *ngIf="isEditButton==true">update</button> -->
 
 
                             </div>

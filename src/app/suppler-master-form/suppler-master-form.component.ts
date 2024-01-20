@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './suppler-master-form.component.html',
   styleUrls: ['./suppler-master-form.component.css']
 })
-export class SupplerMasterFormComponent implements OnInit {
+export class SupplerMasterFormComponent implements OnInit,OnDestroy {
   baseUrl=MainURL.HostUrl
   supplyerForm!: FormGroup;
   isEditFlags: string | null;
@@ -42,6 +42,10 @@ if(this.supplyerId){
       contactEmail:['',[Validators.required]]
     });
   }
+  ngOnDestroy(){
+sessionStorage.removeItem('isEditFlags')
+sessionStorage.removeItem("supplyerid");
+  }
   SaveSupplyer(form:FormGroup){
     if(this.isEditFlags=='true'){
       
@@ -51,6 +55,7 @@ if(this.supplyerId){
         this.sharedservice.updateSupplyer(url, requestUpdate).subscribe((data: any) => {
           this.toastor.success("Supplyer master update successfully")
           this.supplyerForm.reset();
+          sessionStorage.removeItem('buttonFlag')
           // this.router.navigateByUrl('layout/')
           this.router.navigateByUrl('/layout/supplyerMaster')
           },

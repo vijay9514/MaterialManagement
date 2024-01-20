@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './locationmaster-form.component.html',
   styleUrls: ['./locationmaster-form.component.css']
 })
-export class LocationmasterFormComponent implements OnInit {
+export class LocationmasterFormComponent implements OnInit,OnDestroy {
   baseUrl=MainURL.HostUrl
   AddLocation!: FormGroup;
   locationId: string | null;
@@ -28,7 +28,10 @@ export class LocationmasterFormComponent implements OnInit {
       this.getRecordById();
     }
    }
-
+   ngOnDestroy(){
+    sessionStorage.removeItem('locationId')
+    sessionStorage.removeItem("buttonFlag");
+      }
   ngOnInit(): void {
     this.AddLocation = this.fb.group({
       locationName: ['', [Validators.required]],

@@ -3,29 +3,29 @@
         <div class="col-md-12">
             <div class="card" style="margin-top: 40px">
                 <div class="card-header">
-                    Add Supplyer 
+                    Add Supplier
                 </div>
                 <div class="card-body">
                     <form [formGroup]="supplyerForm" (ngSubmit)="SaveSupplyer(supplyerForm)">
                         <!-- Email input -->
                         <div class="form-group row">
                             <div class="col-md-4">
-                                <label class="form-label">supplyer name <span style="color: red">*</span></label>
+                                <label class="form-label">Supplier name <span style="color: red">*</span></label>
                                 <input type="text" class="form-control" formControlName="supplierName" />
 
                                 <div *ngIf="supplyerForm.get('supplierName')?.invalid && (supplyerForm.get('supplierName')?.dirty || supplyerForm.get('supplierName')?.touched)"
                                     style="color: red;">
-                                    supplyer name is required
+                                    Supplier name is required
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">supplyer company name <span
+                                <label class="form-label">Supplier company name <span
                                         style="color: red">*</span></label>
                                 <input type="text" class="form-control" formControlName="supplierCompanyName" />
 
                                 <div *ngIf="supplyerForm.get('supplierCompanyName')?.invalid && (supplyerForm.get('supplierCompanyName')?.dirty || supplyerForm.get('supplierCompanyName')?.touched)"
                                     style="color: red;">
-                                    supplyer company name is required
+                                    Supplier company name is required
                                 </div>
                             </div>
                             <div class="col-md-4">

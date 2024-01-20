@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Emp Image<span style="color: red">*</span></label>
-                                <input type="text" class="form-control" formControlName="empImage" />
+                                <input type="file" class="form-control" formControlName="empImage" />
 
                                 <div *ngIf="AddStaffEmp.get('empImage')?.invalid && (AddStaffEmp.get('empImage')?.dirty || AddStaffEmp.get('empImage')?.touched)"
                                     style="color: red;">

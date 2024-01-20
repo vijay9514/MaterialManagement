@@ -22,6 +22,9 @@ export class SharedService {
   getInwardReport(url:any,data:any):Observable<any>{
     return this.http.post<any>(url,data);
   }
+  getProduct(url:any):Observable<any>{
+    return this.http.get<any>(url);
+  }
   updateSupplyer(url:any,data:any):Observable<any>{
     return this.http.put<any>(url,data);
   }

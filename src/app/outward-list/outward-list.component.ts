@@ -16,7 +16,7 @@ export class OutwardListComponent implements OnInit {
   SupplyerForm: any;
   submitted = false;
   // displayedColumns: string[] = ['userId', 'id', 'title', 'body','Action'];
-  displayedColumns: string[] = ['serialNumber','inwardName','inwardDate', 'inwardTotleAmount', 'contactPersonName', 'contactMobileNo','action'];
+  displayedColumns: string[] = ['serialNumber','inwardName','inwardDate', 'inwardTotleAmount', 'contactPersonName', 'contactMobileNo'];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

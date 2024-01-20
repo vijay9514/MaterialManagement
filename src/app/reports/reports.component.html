@@ -17,6 +17,7 @@
                                     <option [value]=null>Select Report</option>
                                     <option value="Inward Report">Inward Report</option>
                                     <option value="Outward Report">Outward Report</option>
+                                    <option value="Proudt Report">Product Report</option>
         
                                 </select>
         
@@ -26,9 +27,9 @@
         
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" *ngIf="selectedValue!=='Proudt Report'">
 
-                                <label class="form-label">Select Date <span style="color: red">*</span></label>
+                                <label class="form-label">From Date <span style="color: red">*</span></label>
         
                                
                                 <input type="date" class="form-control" formControlName="fromDate" >
@@ -39,9 +40,9 @@
         
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" *ngIf="selectedValue!=='Proudt Report'">
 
-                                <label class="form-label">Select Date <span style="color: red">*</span></label>
+                                <label class="form-label">To Date <span style="color: red">*</span></label>
         
                                
                                 <input type="date" class="form-control" formControlName="toDate" >

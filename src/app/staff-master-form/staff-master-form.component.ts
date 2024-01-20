@@ -28,6 +28,10 @@ export class StaffMasterFormComponent implements OnInit {
       this.getRecordById();
     }
    }
+   ngOnDestroy(){
+    sessionStorage.removeItem('staffId')
+    sessionStorage.removeItem("buttonFlag");
+      }
 
   ngOnInit(): void {
     this.AddStaffEmp = this.fb.group({

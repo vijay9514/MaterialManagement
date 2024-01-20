@@ -75,6 +75,27 @@ export class ReportsComponent implements OnInit {
   
   
    }
+   else if(this.selectedValue=='Proudt Report'){
+    let url = `${this.baseUrl}/getProductAvailableReport`;
+    const requestUpdate = form.value;
+    this.sharedservice.getProduct(url).subscribe((data: any) => {
+
+
+      this.infoservice.changeMessage(JSON.stringify(data["result"]));
+      this.toastor.success("report fetch successfully")
+      this.ReportForm.reset();
+      this.router.navigateByUrl('/layout/productReports')
+     
+      },
+      (err: HttpErrorResponse) => {
+       
+        this.toastor.error("server side error")
+      
+      })
+    
+  
+  
+   }
    
     
   }

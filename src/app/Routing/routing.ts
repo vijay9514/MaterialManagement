@@ -22,12 +22,17 @@ import { AddOutwardMaterialComponent } from '../add-outward-material/add-outward
 import { ReportsComponent } from '../reports/reports.component';
 import { InwardReportComponent } from '../inward-report/inward-report.component';
 import { OutwardReportComponent } from '../outward-report/outward-report.component';
+import { ProductReportComponent } from '../product-report/product-report.component';
 
 
 const appRoutes: Routes=[
     {
         path:'',
         component:LoginComponent
+    },
+    {
+      path:'login',
+      component:LoginComponent
     },
     {
         path:'layout',
@@ -37,6 +42,7 @@ const appRoutes: Routes=[
             path: 'home',
             component: HomeComponent
           },
+          
           {
             path:'masterMenu',
             component:MasterMenuComponent
@@ -45,6 +51,11 @@ const appRoutes: Routes=[
             path:'supplyerMaster',
             component:SupplyerMasterComponent
           },
+          {
+            path:'productReports',
+            component:ProductReportComponent
+          },
+          
           {
           path:'AddSupplyer',
           component:SupplerMasterFormComponent

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ViewChild} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -13,7 +14,7 @@ export class LayoutComponent implements OnInit {
   title = 'material-responsive-sidenav';
   
   
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver,private router:Router) { }
   ngAfterViewInit() {
     this.observer.observe(["(max-width: 800px)"]).subscribe((res) => {
       if (res.matches) {
@@ -43,5 +44,7 @@ export class LayoutComponent implements OnInit {
   //     this.isCollapsed = !this.isCollapsed;
   //   }
   // }
-
+  logout(){
+    this.router.navigateByUrl("layout/login")
+  }
 }

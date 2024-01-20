@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MainURL } from '../configurls';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './addproduct-master.component.html',
   styleUrls: ['./addproduct-master.component.css']
 })
-export class AddproductMasterComponent implements OnInit {
+export class AddproductMasterComponent implements OnInit,OnDestroy {
   baseUrl=MainURL.HostUrl
   AddProductForm!: FormGroup;
   isEditFlags: any;
@@ -30,6 +30,10 @@ export class AddproductMasterComponent implements OnInit {
       this.getRecordById();
     }
    }
+   ngOnDestroy(){
+    sessionStorage.removeItem('productId')
+    sessionStorage.removeItem("buttonFlag");
+      }
 
   ngOnInit(): void {
     this.AddProductForm = this.fb.group({

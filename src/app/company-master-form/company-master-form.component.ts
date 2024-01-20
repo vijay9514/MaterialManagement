@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MainURL } from '../configurls';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './company-master-form.component.html',
   styleUrls: ['./company-master-form.component.css']
 })
-export class CompanyMasterFormComponent implements OnInit {
+export class CompanyMasterFormComponent implements OnInit,OnDestroy {
   baseUrl=MainURL.HostUrl
   AddCompany!: FormGroup;
   compId: any;
@@ -28,6 +28,10 @@ export class CompanyMasterFormComponent implements OnInit {
       this.getRecordById();
     }
    }
+   ngOnDestroy(){
+    sessionStorage.removeItem('compId')
+    sessionStorage.removeItem("buttonFlag");
+      }
 
   ngOnInit(): void {
     this.AddCompany = this.fb.group({
@@ -38,7 +42,7 @@ export class CompanyMasterFormComponent implements OnInit {
      
      
   })
-}
+} 
 
 submitForm(form:FormGroup){
   

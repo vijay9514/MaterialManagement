@@ -44,7 +44,10 @@
       <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
       <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
     </button>
-    Company Logo
+   <span> Company Logo</span>
+   <span style="position: absolute;
+   right: 41px;cursor: pointer;" (click)="logout()">Logout <img src="assets/logout.png" style="height: 30px;
+    width: 31px;"></span>
   </mat-toolbar>
 
 <mat-sidenav-container>
@@ -61,11 +64,12 @@
 
 
 <h4 class="name">Vijay Janwale</h4>
-<p class="designation">Software Engineer</p>
+<!-- <p class="designation">Software Engineer</p> -->
   <button mat-button class="menu-button">
     <a mat-list-item [routerLink]="['/layout/home']" [routerLinkActive]="'active'">
       <span class="entry">
-          <mat-icon>dashboard</mat-icon>
+<img src="assets/dashboards.png" style="height: 18px;
+width: 20px ">&nbsp;&nbsp;
          <span >Dashboard</span>
       </span>
    </a>
@@ -73,15 +77,17 @@
   <button mat-button class="menu-button">
     <a mat-list-item  [routerLink]="['/layout/masterMenu']" [routerLinkActive]="'active'">
       <span class="entry">
-          <mat-icon>settings</mat-icon>
-         <span >Master</span>
+        <img src="assets/settings.png" style="height: 22px;
+        width: 20px ">&nbsp;&nbsp;
+         <span  >Master</span>
       </span>
    </a>
   </button>
   <button mat-button class="menu-button">
     <a mat-list-item  [routerLink]="['/layout/materialMenu']" [routerLinkActive]="'active'">
       <span class="entry">
-          <mat-icon>settings</mat-icon>
+        <img src="assets/moment.png" style="height: 27px;
+        width: 20px ">&nbsp;&nbsp;
          <span >Material Moment</span>
       </span>
    </a>

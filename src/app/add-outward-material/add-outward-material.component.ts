@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MainURL } from '../configurls';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,13 +6,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
 import { SharedService } from '../Services/shared.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-outward-material',
   templateUrl: './add-outward-material.component.html',
   styleUrls: ['./add-outward-material.component.css']
 })
-export class AddOutwardMaterialComponent implements OnInit {
+export class AddOutwardMaterialComponent implements OnInit,OnDestroy {
   baseUrl=MainURL.HostUrl
   outwardForm!: FormGroup;
   productData: any;
@@ -43,7 +44,10 @@ export class AddOutwardMaterialComponent implements OnInit {
    }
   base64Image: string | undefined;
 
-
+  ngOnDestroy(){
+    sessionStorage.removeItem('outwardId')
+    sessionStorage.removeItem("buttonFlag");
+      }
 
   ngOnInit(): void {
     this.outwardForm = this.fb.group({
@@ -176,6 +180,13 @@ this.inwordAllData=this.outwardForm.value
     this.sharedservice.insertSupplyerMaster(url,this.inwordAllData).subscribe(
       (data) => {
        this.toastor.success("Outward insert succefully")
+       this.outwardForm.reset();
+       this.router.navigateByUrl('/layout/outwarList')
+  },
+  (err: HttpErrorResponse) => {
+    // console.error('API Error:', err);
+    this.toastor.error("server side error")
+    // this.router.navigateByUrl('/layout/home');
   })
 }
   

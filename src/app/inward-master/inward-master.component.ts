@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -6,13 +6,14 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SharedService } from '../Services/shared.service';
 import { MainURL } from '../configurls';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inward-master',
   templateUrl: './inward-master.component.html',
   styleUrls: ['./inward-master.component.css']
 })
-export class InwardMasterComponent implements OnInit {
+export class InwardMasterComponent implements OnInit,OnDestroy {
   baseUrl=MainURL.HostUrl
   InwardForm!: any;
   productData: any;
@@ -37,20 +38,23 @@ export class InwardMasterComponent implements OnInit {
   inwardId: any;
   constructor(private router:Router,public spinner: NgxSpinnerService,private ngxService: NgxUiLoaderService,private fb: FormBuilder,private toastor:ToastrService,private sharedservice:SharedService) {
     this.inwardId= sessionStorage.getItem("inwardIds");
-    this.isEditFlags=sessionStorage.getItem("buttonFlag")
+    this.isEditFlags=sessionStorage.getItem("buttonFlag");
     if(this.inwardId){
       this.getInwardById();
     }
    }
   base64Image: string | undefined;
 
-
+  ngOnDestroy(){
+    sessionStorage.removeItem('inwardIds')
+    sessionStorage.removeItem("buttonFlag");
+      }
 
   ngOnInit(): void {
     this.InwardForm = this.fb.group({
       inwardDate: ['', [Validators.required]],
       inwardTotleAmount: ['', [Validators.required]],
-      inwardName:['',[Validators.required]],
+      inward_name:['',[Validators.required]],
       contactPersonName:['',[Validators.required]],
       contactMobileNo:['',[Validators.required]],
       baseInvoiceImage:['',[Validators.required]],
@@ -181,6 +185,15 @@ this.inwordAllData=this.InwardForm.value
     this.sharedservice.insertSupplyerMaster(url,this.inwordAllData).subscribe(
       (data) => {
        this.toastor.success("inward insert succefully")
+       this.InwardForm.reset();
+       
+       this.router.navigateByUrl('/layout/inwardList')
+
+  },
+  (err: HttpErrorResponse) => {
+    // console.error('API Error:', err);
+    this.toastor.error("server side error")
+    // this.router.navigateByUrl('/layout/home');
   })
 }
 UpdateInward(){
@@ -211,8 +224,16 @@ this.inwordAllData=this.InwardForm.value
   this.sharedservice.updateSupplyerData(url,this.inwordAllData).subscribe(
     (data) => {
      this.toastor.success("inward update succefully");
+     this.InwardForm.reset();
+     this.router.navigateByUrl('/layout/inwardList')
+
      this.isEditButton=false
     
+},
+(err: HttpErrorResponse) => {
+  // console.error('API Error:', err);
+  this.toastor.error("server side error")
+  // this.router.navigateByUrl('/layout/home');
 })
 }
   
@@ -231,7 +252,7 @@ debugger
     this.InwardForm.patchValue({
      inwardDate: this.getRecordByData.materialInwardModel.inwardDate,
       inwardTotleAmount: this.getRecordByData.materialInwardModel.inwardTotleAmount,
-      inwardName:this.getRecordByData.materialInwardModel.inwardName,
+      inward_name:this.getRecordByData.materialInwardModel.inward_name,
       contactPersonName:this.getRecordByData.materialInwardModel.contactPersonName,
       contactMobileNo:this.getRecordByData.materialInwardModel.contactMobileNo,
       baseInvoiceImage:this.getRecordByData.materialInwardModel.baseInvoiceImage,
@@ -260,7 +281,7 @@ this.ProductMasterList=this.getRecordByData.materialInwardModel.prodQtyList;
   
       // Now you can use the deletedRecord as needed
       console.log("Deleted Record:", deletedRecord);
-debugger
+
 this.inwardAmount=this.InwardForm.controls['inwardTotleAmount'].value;
 this.total=this.inwardAmount-deletedRecord.total
 this.InwardForm.controls['inwardTotleAmount'].patchValue(this.total)

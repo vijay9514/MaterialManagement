@@ -6,7 +6,7 @@
         Add Supplyer
       </button> -->
       <div style="margin-bottom: 17px">
-        <button mat-raised-button color="warn" [routerLink]="['/layout/AddSupplyer']" style="cursor: pointer;">  Add Supplyer</button>
+        <button mat-raised-button color="warn" [routerLink]="['/layout/AddSupplyer']" style="cursor: pointer;">  Add Supplier</button>
       </div>
     
       
@@ -20,12 +20,12 @@
             <td mat-cell *matCellDef="let i = index"> {{ i + 1 }} </td>
           </ng-container>
           <ng-container matColumnDef="supplierName">
-            <th mat-header-cell *matHeaderCellDef> supplyer Name </th>
+            <th mat-header-cell *matHeaderCellDef> Supplier Name </th>
             <td mat-cell *matCellDef="let element"> {{element.supplierName}} </td>
           </ng-container>
       
           <ng-container matColumnDef="supplierCompanyName">
-            <th mat-header-cell *matHeaderCellDef> supplyer Company Name </th>
+            <th mat-header-cell *matHeaderCellDef> Supplier Company Name </th>
             <td mat-cell *matCellDef="let element"> {{element.supplierCompanyName}} </td>
           </ng-container>
       

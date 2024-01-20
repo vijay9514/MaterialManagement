@@ -43,6 +43,7 @@ import { AddOutwardMaterialComponent } from './add-outward-material/add-outward-
 import { ReportsComponent } from './reports/reports.component';
 import { InwardReportComponent } from './inward-report/inward-report.component';
 import { OutwardReportComponent } from './outward-report/outward-report.component';
+import { ProductReportComponent } from './product-report/product-report.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { OutwardReportComponent } from './outward-report/outward-report.componen
     AddOutwardMaterialComponent,
     ReportsComponent,
     InwardReportComponent,
-    OutwardReportComponent
+    OutwardReportComponent,
+    ProductReportComponent
   ],
   imports: [
     BrowserModule,
